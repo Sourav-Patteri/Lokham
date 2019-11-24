@@ -5,7 +5,8 @@
   // Get the users
 
   include_once(ROOT . "/includes/_connect.php");
-
+  
+ $conn = (new Connect())->connect();
   // or change this to $users = $conn->query($sql); which will prepare, execute and fetchAll in one command
   $sql = "SELECT * FROM users ORDER BY created_at DESC"; // sql string
   $stmt = $conn->prepare($sql); // prepare the sql and return the prepared statement

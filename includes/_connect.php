@@ -1,18 +1,17 @@
 <?php
-$db_config = new stdClass;
-$db_config->host = "localhost";
-$db_config->dbname = "lokham";
-$db_config->username = "root";
-$db_config->password = "";
+class Connect {
+   public $host = "localhost";
+   public $dbname = "lokham";
+   public $username = "root";
+   public $password = "";
 
-$conn = new PDO("mysql:host={$db_config->host};dbname={$db_config->dbname}", $db_config->username, $db_config->password);
+  
+    public function connect() {
+      $db = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+      $pdo = new PDO($db, $this->username, $this->password);
+      $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); 
+      return $pdo;
+    }
+}
 
-// class Connect {
-//     public $connection;
   
-//     function __construct ($host, $dbname, $username, $password) {
-//       $self->connection = new PDO("mysql:host={$host};dbname={$dbname}", $username, $password);
-//     }
-//   }
-  
-//   $conn = (new Connect('localhost', 'lokham', 'root', ''))->connection;
