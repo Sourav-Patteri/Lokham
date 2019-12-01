@@ -24,8 +24,8 @@
           Users
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/users/new.php">Create a New User</a>
-          <a class="dropdown-item" href="/users">View All Users</a>
+          <a class="dropdown-item" href="<?= base_path ?>/users/new.php">Create a New User</a>
+          <a class="dropdown-item" href="<?= base_path ?>/users/show.php">View All Users</a>
         </div>
       </li>
     </ul>
