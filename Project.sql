@@ -41,8 +41,13 @@ CREATE TABLE IF NOT EXISTS `lokham`.`issues` (
      
 -- Constraints for table `issues`
 
-ALTER TABLE `issues`
-  ADD CONSTRAINT FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ALTER TABLE `lokham`.`issues`
+  ADD INDEX `fk_users_idx` (`user_id` ASC),
+  ADD CONSTRAINT `fk_user`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `lokham`.`users` (`id`)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE;
 
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `middle_name`, `phone`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
