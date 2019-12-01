@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `issues`;
 CREATE TABLE IF NOT EXISTS `lokham`.`issues` (
 	`issue_id` INT NOT NULL AUTO_INCREMENT,
 	`user_id` INT NOT NULL,
-	`content` VARCHAR(1000) NOT NULL DEFAULT '',
+	`content` TEXT NOT NULL DEFAULT '',
 	`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 	`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
      PRIMARY KEY (`issue_id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8;
@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `lokham`.`issues` (
   REFERENCES `lokham`.`users` (`id`)
   ON UPDATE CASCADE
   ON DELETE CASCADE;
+
 
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `middle_name`, `phone`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
