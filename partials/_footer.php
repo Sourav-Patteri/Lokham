@@ -1,6 +1,26 @@
-        <footer class="footer">
+ 
+        <footer class="footer bg-dark py-4">
             <div class="container">
-                <span class="text-muted"><center><small>Lokham. &copy All Rights Reserved.</small></center></span>
+                <div class="text-center">
+                    <h3 class="text-white lead font-weight-bold">Lokham</h3>
+                    <small class="text-muted">&copy All Rights Reserved.</small>
+                </div>
+                <nav id="Footer-nav" class="navbar navbar-expand-sm navbar-dark ">
+                    <ul class="navbar-nav m-auto" >
+                        <li class="nav-item" >
+                            <a class="nav-link" href="#home">Lokham</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#create-head-section">Sign Up</a>
+                        </li >
+                        <li class="nav-item">
+                            <a class="nav-link" href="#share-head-section">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#share-head-section">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </footer>
         <!-- include script files bootstrap and cloudflare-->

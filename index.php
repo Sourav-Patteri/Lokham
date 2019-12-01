@@ -11,8 +11,8 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="well">
-            <header class="mt-5">
-            <center><h1>Lokham</h1></center>
+            <header class="mt-5 text-center">
+                 <h1>Lokham</h1>
             </header>
         </div>
     </div>
