@@ -24,11 +24,11 @@
         <div class="d-flex justify-content-center">
             <div class="btn-group-vertical" role="group" aria-label="...">
                 <div class="well">
-                    <a href="<?= ROOT . '/users/new.php'?>"><button type="button" class="btn btn-info">Sign-up</button></a>
+                    <a href="<?= base_path ?>/users/new.php"><button type="button" class="btn btn-info">Sign-up</button></a>
                 </div>
                 --------------
                 <div class="well">
-                    <a href="<?= ROOT . '/sessions/login.php'?>"><button type="button" class="btn btn-info">Login</button></a>
+                    <a href="<?= base_path ?>/sessions/login.php"><button type="button" class="btn btn-info">Login</button></a>
                 </div>
             </div>
         </div>

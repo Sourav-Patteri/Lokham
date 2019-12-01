@@ -1,8 +1,9 @@
 <?php
     if(session_status() === PHP_SESSION_NONE) session_start();
-
     // assign and unset session variable
-
+    $flash_data = $_SESSION['flash'] ?? null; //null coalescing
+    // Clear the session variables so it's blank the next time
+    unset($_SESSION['flash']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,6 @@
     </head>
     <body>
 <?php 
-include(ROOT . '/partials/_main-nav.php')
-//include flash.php
+include(ROOT . '/partials/_main-nav.php');
+include(ROOT . '/partials/_flash.php'); 
 ?>
