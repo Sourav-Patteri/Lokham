@@ -19,16 +19,16 @@
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <img src=".\img\world_tree.jpg" alt="World as a tree" class="img-rounded" title="Lokham" height="660px" width="750px">
+        <img src=".\img\world_tree.jpg" alt="World as a tree" class="img-rounded" title="Lokham" height="550px" width="750px">
     </div>
         <div class="d-flex justify-content-center">
             <div class="btn-group-vertical" role="group" aria-label="...">
                 <div class="well">
-                    <a href="<?= ROOT . '/users/_form.php'?>"><button type="button" class="btn btn-info">Sign-up</button></a>
+                    <a href="<?= ROOT . '/users/new.php'?>"><button type="button" class="btn btn-info">Sign-up</button></a>
                 </div>
                 --------------
                 <div class="well">
-                    <button type="button" class="btn btn-info">Login</button>
+                    <a href="<?= ROOT . '/sessions/login.php'?>"><button type="button" class="btn btn-info">Login</button></a>
                 </div>
             </div>
         </div>

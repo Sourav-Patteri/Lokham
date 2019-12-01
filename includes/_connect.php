@@ -1,21 +1,4 @@
 <?php
-// using a class with default values
-// class Connect {
-//    private $host = "localhost";
-//    private $dbname = "lokham";
-//    private $username = "root";
-//    private $password = "";
-
-  
-//     public function connect() {
-//       $db = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
-//       $pdo = new PDO($db, $this->username, $this->password);
-//       $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); 
-//       return $pdo;
-//     }
-// }
-//  $conn = (new Connect())->connect();
-
 // using a constructor
  class Connect {
   public $pdo;
