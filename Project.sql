@@ -34,15 +34,51 @@ DROP TABLE IF EXISTS `issues`;
 CREATE TABLE IF NOT EXISTS `lokham`.`issues` (
 	`issue_id` INT NOT NULL AUTO_INCREMENT,
 	`user_id` INT NOT NULL,
-	`content` VARCHAR(1000) NOT NULL DEFAULT '',
+	`content` TEXT NOT NULL DEFAULT '',
 	`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 	`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
      PRIMARY KEY (`issue_id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8;
      
 -- Constraints for table `issues`
 
-ALTER TABLE `issues`
-  ADD CONSTRAINT FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ALTER TABLE `lokham`.`issues`
+  ADD INDEX `fk_users_idx` (`user_id` ASC),
+  ADD CONSTRAINT `fk_user`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `lokham`.`users` (`id`)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE;
+
+-- ----------------------------------------
+--   Table `reviews`
+-- ----------------------------------------
+ 
+DROP TABLE IF EXISTS `ratings`;
+CREATE TABLE IF NOT EXISTS `lokham`.`ratings` (
+	`rating_id` INT NOT NULL AUTO_INCREMENT,
+	`user_id` INT NOT NULL,
+	`issue_id` INT NOT NULL,
+	`review` ENUM('1', '2', '3', '4', '5') NOT NULL,
+	`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+	`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+     PRIMARY KEY (`issue_id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+     
+-- Constraints for table `ratings`
+
+  ALTER TABLE `lokham`.`ratings`
+  ADD INDEX `fk_users_idx` (`user_id` ASC),
+  ADD CONSTRAINT `fk_user`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `lokham`.`users` (`id`)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE
+  ADD INDEX `fk_issues_idx` (`issue_id` ASC),
+  ADD CONSTRAINT `fk_issue`
+  FOREIGN KEY (`issue_id`)
+  REFERENCES `lokham`.`issues` (`issue_id`)
+  ON UPDATE CASCADE
+  ON DELETE CASCADE;
+
 
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `middle_name`, `phone`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
