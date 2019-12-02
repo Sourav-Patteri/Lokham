@@ -1,9 +1,11 @@
 <?php
     if(session_status() === PHP_SESSION_NONE) session_start();
-    // assign and unset session variable
+    // assign session variables form data and flash data
     $flash_data = $_SESSION['flash'] ?? null; //null coalescing
+    $form_data = $_SESSION['form_data'] ?? null;
     // Clear the session variables so it's blank the next time
     unset($_SESSION['flash']);
+    unset($_SESSION['form_data']);
 ?>
 <!DOCTYPE html>
 <html>
