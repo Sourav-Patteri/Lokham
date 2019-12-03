@@ -47,7 +47,7 @@
   $sql = "INSERT INTO issues (user_id, content) VALUES (:user_id, :content)";
   $stmt = $conn->prepare($sql);
   // how to pass the user id??
-  // $stmt->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+  $stmt->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
   $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
   var_dump($stmt);
   $stmt->execute();

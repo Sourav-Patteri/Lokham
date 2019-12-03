@@ -35,18 +35,18 @@
             Issue Management
           </a>
           <div class="dropdown-menu" aria-labelledby="blogDropdown">
-            <a class="dropdown-item" href="<?= base_path ?>/posts/new.php">Create a New Issue</a>
-            <a class="dropdown-item" href="<?= base_path ?>/posts">Archives</a>
+            <a class="dropdown-item" href="<?= base_path ?>/issues/new.php">Create a New Issue</a>
+            <a class="dropdown-item" href="<?= base_path ?>/issues">Archives</a>
           </div>
         </li>
       <?php else: ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?= base_path ?>/posts">Issues</a>
+          <a class="nav-link" href="<?= base_path ?>/issues">Issues</a>
         </li>
       <?php endif ?>
       <?php if (AUTH && !ADMIN): ?>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_path ?>/posts/create.php">Post an Issue</a>
+        <a class="nav-link" href="<?= base_path ?>/issues/new.php">Post an Issue</a>
       </li> 
       <?php endif ?>
       <li class="nav-item <?= isset($_active) && $_active === 'about' ? 'active' : null ?>">
