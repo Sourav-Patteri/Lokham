@@ -13,10 +13,13 @@
   $_SESSION['flash'] = [];
   $errors = [];
 
-  foreach ($_POST as $field => $value) {//here the keys from the associative array post is stored in $field and the respective values are stored in $value. Used here to simplify and not use variable variables
-    if (empty($value)) {
-      $formatted = ucfirst(str_replace("_", " ", $field)); // Format it
-      $errors[] = "The {$formatted} field cannot be empty."; // Add a new error to the array
+  
+  // Verify the following aren't empty
+  $required = ['first_name', 'last_name', 'email', 'password', 'password_confirmation'];
+  foreach ($required as $field) {
+    if (empty($_POST[$field])) { // Variable variables allow us to use strings to access a variable name
+      $formatted = ucfirst(str_replace("_", " ", $field)); // Format it into human readable
+      $errors[] = "{$formatted} cannot be empty."; // Add a new error to the array
     }
   }
   //verifying email is in correct format
