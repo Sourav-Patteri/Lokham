@@ -23,6 +23,7 @@
       return $data;
     }
   }
+  //to do and implement
   public static function query_bind($query, $params = array()) {
     $statement = self::connect()->prepare($query);
     $statement->execute($params);
