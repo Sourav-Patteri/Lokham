@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `lokham`.`ratings` (
 	`review` ENUM('1', '2', '3', '4', '5') NOT NULL,
 	`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 	`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-     PRIMARY KEY (`issue_id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+     PRIMARY KEY (`rating_id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8;
      
 -- Constraints for table `ratings`
 
