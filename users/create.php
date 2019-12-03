@@ -39,7 +39,7 @@
 
 if (count($errors) > 0) {
     $_SESSION['form_data'] = $_POST;
-    redirect_with_errors(base_path . '/users/new.php', errors);
+    redirect_with_errors(base_path . '/users/new.php', $errors);
   }
 
 $sql = "SELECT email FROM users WHERE email = :email";
@@ -52,7 +52,7 @@ if ($exists) $errors[] = "This user already exists.";
 
 if (count($errors) > 0) {
     $_SESSION['form_data'] = $_POST;
-    redirect_with_errors(base_path . '/users/new.php', errors);
+    redirect_with_errors(base_path . '/users/new.php', $errors);
   }
   $_POST['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   
