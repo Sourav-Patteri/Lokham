@@ -15,12 +15,12 @@
 
   // Step 1: Verify the fields aren't empty using a foreach loop
   // Variable variables allow us to use strings to access a variable name
-  foreach ($_POST as $field => $value) { // iterate thru $_POST and dump to $field => take the key($field) and assign the value to $value
-    if (empty($value)) {
-      $formatted = ucwords(str_replace("_", " ", $field)); // Format it into human readable
-      $errors[] = "{$formatted} cannot be empty.";  // Add(push) a new error to the array
-    }
-  }
+  // foreach ($_POST as $field => $value) { // iterate thru $_POST and dump to $field => take the key($field) and assign the value to $value
+  //   if (empty($value)) {
+  //     $formatted = ucwords(str_replace("_", " ", $field)); // Format it into human readable
+  //     $errors[] = "{$formatted} cannot be empty.";  // Add(push) a new error to the array
+  //   }
+  // }
 
   //Return to the form if there are errors (we do this here because we don't want to run malicious code against our database)
   // count the $errors array
@@ -44,9 +44,12 @@
 
   // insert the Issue to the database
 
-  $sql = "INSERT INTO issues (content) VALUES :content";
+  $sql = "INSERT INTO issues (user_id, content) VALUES (:user_id, :content)";
   $stmt = $conn->prepare($sql);
+  // how to pass the user id??
+  // $stmt->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_INT);
   $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
+  var_dump($stmt);
   $stmt->execute();
 
   $conn = null;
