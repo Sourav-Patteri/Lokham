@@ -1,4 +1,9 @@
 <?php include_once('../_config.php');
+//<!-- redirect block direct access to the form -->
+//  if (AUTH && !ADMIN) redirect(base_path) 
+
+//  or you can do thru the request ans $_SERVER variable
+
 // This will redirect if user tries to access the form through url
 $path = $_SERVER['REQUEST_URI']; // get's request path using superglobal variable server
 $path_parts = explode("/", $path); // splits path into parts array
