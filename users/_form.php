@@ -4,7 +4,7 @@
 
 //  or you can do thru the request ans $_SERVER variable
 
-// This will redirect if user tries to access the form through url
+// This will redirect if user tries to access the form through url -> can become a function in the helpers
 $path = $_SERVER['REQUEST_URI']; // get's request path using superglobal variable server
 $path_parts = explode("/", $path); // splits path into parts array
 $file_name = end($path_parts); // grabs last element in the array (the filename)

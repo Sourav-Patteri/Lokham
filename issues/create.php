@@ -42,8 +42,8 @@
     redirect_with_errors(base_path . '/issues/new.php', $errors);
   }
 
+  // Get the Id of the user to pass to the database
   // insert the Issue to the database
-
   $sql = "INSERT INTO issues (user_id, content) VALUES (:user_id, :content)";
   $stmt = $conn->prepare($sql);
   // how to pass the user id??
