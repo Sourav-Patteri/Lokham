@@ -5,13 +5,27 @@ $path_parts = explode("/", $path); // splits path into parts array
 $file_name = end($path_parts); // grabs last element in the array (the filename)
 
 if ($file_name === "_form.php") redirect(base_path . '/users/new.php'); // redirects if filename is the same as the form
+ 
+// If the user is attempting to edit and their not authenticated
+  // or they're attempting to edit another user and they're not an admin
+  if (isset($_action) && (!AUTH || ($_GET['id'] !== $_SESSION['user']['id'] && !ADMIN))) {
+    redirect(base_path);
+  } else if (!isset($_action) && AUTH && !ADMIN) { // If the user is attempting to create
+    // Only admins can create new users while logged in
+    redirect(base_path);
+  }
 $form_data = $form_data ?? null;
 ?>
-<!-- add logic to only allow admins and general public(not logged in to use)  -->
 
-<!-- add hidden id if _action isset -->
-<form action="<?= base_path ?>/users/create.php" method="post">
+<!-- add hidden id if _action isset but why?? -->
+
+<form action="<?= $_action ?? base_path . "/users/create.php" ?>" method="post">
   <div class="row">
+    
+    <?php if (isset($_action)): ?>
+      <input type="hidden" class="form-control" id="id" name="id" value="<?= $form_data['id'] ?>">
+    <?php endif ?>
+    
     <div class="form-group col">
       <label for="first_name">First Name:</label>
       <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name"  value="<?= $form_data['first_name'] ?? null ?>">
