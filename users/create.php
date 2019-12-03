@@ -38,10 +38,8 @@
 //   }
 
 if (count($errors) > 0) {
-    $_SESSION['flash']['danger'] = $errors;
     $_SESSION['form_data'] = $_POST;
-    header('Location: ' . base_path . '/users/new.php'); // redirect to form
-    exit;
+    redirect_with_errors(base_path . '/users/new.php', errors);
   }
 
 $sql = "SELECT email FROM users WHERE email = :email";
@@ -53,10 +51,8 @@ $exists = $stmt->fetch();
 if ($exists) $errors[] = "This user already exists.";
 
 if (count($errors) > 0) {
-    $_SESSION['flash']['danger'] = $errors;
     $_SESSION['form_data'] = $_POST;
-    header('Location: ' . base_path . '/users/new.php'); // redirect to form
-    exit;
+    redirect_with_errors(base_path . '/users/new.php', errors);
   }
   $_POST['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   
@@ -64,7 +60,7 @@ if (count($errors) > 0) {
     $_POST[$field] = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
   }
   
-$sql = "INSERT INTO users (first_name, last_name, email, password, avatar) VALUES (:first_name, :last_name, :email, :password, :avatar)";
+$sql = "INSERT INTO users (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)";
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':first_name', $_POST['first_name'], PDO::PARAM_STR);
@@ -75,6 +71,4 @@ $stmt->execute();
 
 $conn = null;
 
-$_SESSION['flash']['success'][] = "You have successfully registered at Lokham";
-header('Location: ' . base_path . '/sessions/login.php');
-exit;
+redirect_with_success(base_path . '/sessions/login.php',  "You have successfully registered at Lokham");

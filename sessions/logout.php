@@ -8,6 +8,4 @@
 
   // Return the user to the home page of the site
   $_SESSION['flash'] = [];
-  $_SESSION['flash']['success'][] = "You've logged out successfully";
-  header('Location: ' . base_path . '/index.php');
-  exit;
+  redirect_with_success(base_path . '/index.php', "You have logged out successfully");

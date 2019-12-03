@@ -22,12 +22,12 @@
         <label for="email">Password:</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
       </div>
-      <button class="btn btn-primary" type="submit">Submit</button>
+      <button class="btn btn-primary" type="submit">Login</button>
     </form>
   </section>
 
   <div>
-    <small> New Member... <a href="<?= base_path ?>/sessions/register.php">Register now</a>!</small>
+    <small> Haven't signed up yet? No Problemo!<a href="<?= base_path ?>/sessions/register.php">Click here to Sign Up</a>!</small>
   </div>
 </div>
 

@@ -3,7 +3,7 @@
  include_once(ROOT . '/includes/_connect.php');
 
     $_title = "Lokham - Register or Log in";
-    $_active = ""; // what is active?
+    $_active = "lokham";
     include(ROOT . '/partials/_header.php');
 
     if(session_status() === PHP_SESSION_NONE) session_start();

@@ -4,10 +4,11 @@ $path = $_SERVER['REQUEST_URI']; // get's request path using superglobal variabl
 $path_parts = explode("/", $path); // splits path into parts array
 $file_name = end($path_parts); // grabs last element in the array (the filename)
 
-if ($file_name === "_form.php") header('Location: ' . base_path . '/users/new.php'); // redirects if filename is the same as the form
+if ($file_name === "_form.php") redirect(base_path . '/users/new.php'); // redirects if filename is the same as the form
 $form_data = $form_data ?? null;
-
 ?>
+<!-- add logic to only allow admins and general public(not logged in to use)  -->
+
 <!-- add hidden id if _action isset -->
 <form action="<?= base_path ?>/users/create.php" method="post">
   <div class="row">

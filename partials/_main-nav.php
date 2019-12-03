@@ -8,7 +8,7 @@
 <!-- quick login option in navbar if not logged in -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item <?= isset($_active) && $_active === 'lokham' ? 'active' : null ?>">
           <!-- only display if logged in -->
         <a class="nav-link" href="<?= base_path ?>/">Home</span></a>
       </li>
