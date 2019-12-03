@@ -72,7 +72,7 @@
       </li>
       <?php else: ?>
       <li class="nav-item">
-        <a href="<?= base_path ?>/users/new.php" class="nav-link">
+        <a href="<?= base_path ?>/sessions/logout.php" class="nav-link">
           <i class="fa fa-lock"></i>&nbsp;Logout
         </a>
       </li>
