@@ -34,8 +34,24 @@
       Sanitization - will prevent data that isn't permitted
       from being entered into our database
     */
-    foreach (['content'] as $field) {
-        $_POST[$field] = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
-      }
+  foreach (['content'] as $field) {
+      $_POST[$field] = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
+    }
+
+  if(count($errors) > 0 ){
+    redirect_with_errors(base_path . '/issues/new.php', $errors);
+  }
+
+  // insert the Issue to the database
+
+  $sql = "INSERT INTO issues (content) VALUES :content";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
+  $stmt->execute();
+
+  $conn = null;
+
+  redirect_with_success(base_path . '/issues/index.php',  "You have successfully posted your issue");
+
 
       
