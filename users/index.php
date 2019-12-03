@@ -3,6 +3,8 @@
 
   // Start the session
   if(session_status() == PHP_SESSION_NONE) session_start();
+  not_admin_redirect(base_path);
+
   // Get the users
 
   include_once(ROOT . '/includes/_connect.php');
@@ -14,20 +16,15 @@
   $users = $stmt->fetchAll(); // fetch all the records returned
 ?>
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <title>Users</title>
-  </head>
+<?php
+  $_title = "List All Users - Admin";
+  $_active = "users";
 
-  <body>
+include_once(ROOT . '/partials/_header.php'); ?>
+
     <div class="container">
       <header class="mt-5">
-        <h1>
-          Users
-        </h1>
+        <h1><?= $_title ?></h1>
         <hr>
         <small>
           <a href="./new.php"><i class="fa fa-plus"></i>&nbsp;New user...</a>
@@ -52,7 +49,6 @@
                 <td><a href="./show?id=<?= $user['id'] ?>"><?= $user['first_name'] ?> <?= $user['last_name'] ?></a></td>
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['phone'] ?></td>
-               
                 <td>
                   <?= date("d/m/Y", strtotime($user['created_at'])) ?>
                   <br>
@@ -73,8 +69,4 @@
       <?php endif ?>
     </div>
 
-    <footer class="mb-5"></footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-  </body>
-</html>
+  <?php include_once(ROOT . '/partials/_footer.php') ?>

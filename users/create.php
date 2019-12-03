@@ -1,6 +1,11 @@
 <?php
   // Add the connection script
   include_once(dirname(__DIR__) . '/_config.php');
+  // If the user is attempting to create a new user while logged in
+  // and they are not an administrator then we'll redirect them
+  if (AUTH && !ADMIN) {
+    redirect(base_path . '/users/show.php?id=' . $_SESSION['user']['id']);
+  }
   include_once(ROOT . "/includes/_connect.php");
 
   if (session_status() === PHP_SESSION_NONE) session_start();

@@ -11,7 +11,7 @@
   }
 
   function not_admin_redirect ($path) {
-    if (!is_auth() || (is_auth() && !is_admin())) {
+    if (!is_auth() || !is_admin()) {
       redirect($path);
     }
   }
