@@ -46,7 +46,7 @@
       <?php endif ?>
       <?php if (AUTH && !ADMIN): ?>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_path ?>/issues/new.php">Post an Issue</a>
+        <a class="nav-link <?= isset($_active) && $_active === 'issue' ? 'active' : null ?>" href="<?= base_path ?>/issues/new.php">Post an Issue</a>
       </li> 
       <?php endif ?>
       <li class="nav-item <?= isset($_active) && $_active === 'about' ? 'active' : null ?>">
