@@ -1,5 +1,6 @@
 <?php include('../_config.php') ?>
-<?php not_auth_redirect(base_path)?>
+<!-- this can't be here, or u cant create new users -->
+<?php //not_auth_redirect(base_path)?>
 
 <?php
   $_title = "Create a New User";

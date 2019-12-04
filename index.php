@@ -46,10 +46,10 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card bg-secondary text center card-form">
+                    <div class="card bg-secondary text center">
                         <div class="card-body">
-                            <h3 class="mb-2" >Talk about whats happening in the world right now</h3>
-                            <p>Join Lokham today</p>
+                            <h3 class="card-title mb-2" >Talk about whats happening in the world right now</h3>
+                            <p class="card-text" >Join Lokham today</p>
                             <div class="d-flex flex-column">
                                     <a class="btn btn-info m-2" href="<?= base_path ?>/users/new.php">Sign-up</a>
                                     <a  class="btn btn-info m-2" href="<?= base_path ?>/sessions/login.php">Login</a>
