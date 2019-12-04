@@ -60,7 +60,7 @@
         edit
       </a>
       |
-      <a href="<?= base_path ?>/posts/destroy.php?id=<?= $issue['id'] ?>" onclick="return confirm('Are you sure you want to delete your own profile?')">
+      <a href="<?= base_path ?>/posts/destroy.php?id=<?= $issue['id'] ?>" onclick="return confirm('Are you sure you want to delete this issue?')">
         <i class="fa fa-trash"></i>
         delete
       </a>
