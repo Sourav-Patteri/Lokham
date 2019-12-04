@@ -1,11 +1,10 @@
-<?php include_once('../_config.php');
+<?php include_once('../_config.php')?>
+<!-- redirect un auth usser  -->
+<?php not_auth_redirect(base_path)?>
 
-// todo : redirect un auth usser 
 
+<!-- // just the form -->
 
-// just the form
-
-?>
 <!-- add hidden id if _action isset -->
 <form action="<?= base_path ?>/issues/create.php" method="post">
   <div class="row">

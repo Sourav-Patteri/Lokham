@@ -42,12 +42,12 @@
     redirect_with_errors(base_path . '/issues/new.php', $errors);
   }
 
+  // Get the Id of the user to pass to the database
   // insert the Issue to the database
-
   $sql = "INSERT INTO issues (user_id, content) VALUES (:user_id, :content)";
   $stmt = $conn->prepare($sql);
   // how to pass the user id??
-  // $stmt->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+  $stmt->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
   $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
   var_dump($stmt);
   $stmt->execute();

@@ -1,4 +1,5 @@
 <?php include('../_config.php') ?>
+<?php not_auth_redirect(base_path)?>
 
 <?php
   $_title = "Create a New Post";
