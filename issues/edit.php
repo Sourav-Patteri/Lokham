@@ -4,7 +4,7 @@
 <?php
   // Get the post
   include_once(ROOT . "/includes/_connect.php");
-  $sql = "SELECT * FROM issues WHERE id=:id"; // sql string
+  $sql = "SELECT * FROM issues WHERE issue_id=:id"; // sql string
   $stmt = $conn->prepare($sql); // prepare the sql and return the prepared statement
   $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
   $stmt->execute(); // execute the statement
