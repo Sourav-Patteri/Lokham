@@ -10,7 +10,7 @@
   <div class="row">
     <div class="form-group">
       <label for="content">Issue:</label>
-      <textarea class="form-control" rows="6" id="content" name="content"  value="<?= $issue_data['content'] ?? null ?>"></textarea>
+      <textarea class="form-control" rows="6" cols="50" id="content" name="content" required value="<?= $issue_data['content'] ?? null ?>"></textarea>
       <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
     </div>
   </div>

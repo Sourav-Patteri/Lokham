@@ -1,6 +1,5 @@
 <?php include('../_config.php') ?>
 <?php if (AUTH && !ADMIN) redirect(base_path) ?>
-
 <?php
   $_title = "Create a New User";
   $_active = "users";
