@@ -2,7 +2,7 @@
 <?php not_auth_redirect(base_path)?>
 
 <?php
-  $_title = "Create a New Post";
+  $_title = "Post a New Issue";
   $_active = "issues";
 ?>
 
@@ -10,13 +10,15 @@
 
 <div class="container">
   <header class="mt-5">
-    <h1>Create a New Issue</h1>
+    <h1>Post a New Issue</h1>
     <hr>
     <small>
       <a href="<?= base_path ?>/users/"><i class="fa fa-chevron-left"></i>&nbsp;Back to users...</a>
     </small>
   </header>
-
+  <p>
+    <a href="<?= base_path?>/issues/index.php">Return to archives</a>
+  </p>
   <div class="row">
 
     <!-- <div class="col-sm-4">

@@ -36,4 +36,4 @@
   // Set a session variable to verify the user is authenticated
   $_SESSION['user'] = $user;
 
-  redirect_with_success(base_path . '/users/show.php', "You have successfully logged in to Lokham");
+  redirect_with_success(base_path . '/issues.php/index.php', "You have successfully logged in to Lokham");
