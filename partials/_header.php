@@ -1,4 +1,5 @@
 <?php
+    include_once(dirname(__DIR__) . "/_config.php");
     if(session_status() === PHP_SESSION_NONE) session_start();
     // assign session variables form data and flash data
     $flash_data = $_SESSION['flash'] ?? null; //null coalescing
@@ -16,8 +17,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Font awesome -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- this works better i guess -->
-    <!-- <script src="https://kit.fontawesome.com/461864901a.js"></script> -->
+    <!-- this works better i guess, cooool thanks -->
+    <script src="https://kit.fontawesome.com/461864901a.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
         <title><?= $_title ?? "Lokham"?></title> <! –– null coalescing -->
     </head>
     <body>
