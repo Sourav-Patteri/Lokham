@@ -125,5 +125,5 @@ CREATE TABLE IF NOT EXISTS `lokham`.`comments` (
   ON UPDATE CASCADE
   ON DELETE CASCADE;
   
-INSERT INTO `comments` (`comment_id`, `user_id`, `issue_id`, `rating_id`, `comments`, `created_at`, `updated_at`) VALUES
+INSERT INTO `comments` (`comment_id`, `user_id`, `issue_id`, `rating_id`, `comment`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 1, 'And unless we act right now, we cannot save it', '2019-11-04 08:50:02', '2019-11-04 15:30:20');

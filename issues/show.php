@@ -13,7 +13,8 @@
   $issue = $stmt->fetch();
 
   $sql = "SELECT *, comments.comment_id as id FROM comments
-    JOIN users ON comments.user_id = users.id
+    JOIN users ON comments.user_id = users.id  
+    JOIN ratings ON comments.rating_id = ratings.rating_id
     WHERE comments.issue_id = {$issue['id']}";
   $comments = Connect::query($sql);
 ?>
@@ -52,15 +53,15 @@
   <hr class="m-5">
 
   <p class="ml-5">
-    <a href="<?= base_path ?>/posts">Return to archives...</a>
+    <a href="<?= base_path ?>/issues/">Return to archives...</a>
     <?php if (ADMIN && $_SESSION['user']['id'] === $issue['user_id']): ?>
       |
-      <a href="<?= base_path ?>/posts/edit.php?id=<?= $issue['id'] ?>">
+      <a href="<?= base_path ?>/issues/edit.php?id=<?= $issue['id'] ?>">
         <i class="fa fa-pencil"></i>
         edit
       </a>
       |
-      <a href="<?= base_path ?>/posts/destroy.php?id=<?= $issue['id'] ?>" onclick="return confirm('Are you sure you want to delete this issue?')">
+      <a href="<?= base_path ?>/issues/destroy.php?id=<?= $issue['id'] ?>" onclick="return confirm('Are you sure you want to delete this issue?')">
         <i class="fa fa-trash"></i>
         delete
       </a>
@@ -87,13 +88,13 @@
         <?php foreach ($comments as $comment): ?>
           <li class="list-group-item">
             <h5 class="mb-4">
-            <?php
-    //   echo $issue['title'] 
-      ?>
               <small>&nbsp;&mdash;&nbsp;<?= $comment['first_name'] ?> <?= $comment['last_name'] ?></small>
             </h5>
             <hr>
             <div class="ml-5 d-flex flex-row justify-content-between align-items-center">
+              <p>
+              <?= $comment['rating'] ?>
+              </p>
               <p>
                 <?= $comment['comment'] ?>
               </p>
