@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `lokham`.`comments` (
   `user_id` INT NOT NULL,
   `issue_id` INT NOT NULL,
   `rating_id` INT NOT NULL,
-  `comments` TEXT NULL,
+  `comment` TEXT NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`comment_id`)) ENGINE = INNODB DEFAULT CHARSET=UTF8;
