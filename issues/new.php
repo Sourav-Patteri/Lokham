@@ -24,7 +24,7 @@
     <!-- <div class="col-sm-4">
 
     </div> -->
-    <div class="col-sm-6 border p-4">
+    <div class="col-sm-12 border p-4">
       <?php include(ROOT . '/issues/_form.php') ?>
     </div>
   </div>

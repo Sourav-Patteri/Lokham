@@ -35,6 +35,11 @@ $form_data = $form_data ?? null;
       <label for="first_name">First Name:</label>
       <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name"  value="<?= $form_data['first_name'] ?? null ?>">
     </div>
+    
+    <div class="form-group col">
+      <label for="first_name">Middle Name:</label>
+      <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Enter Middle Name"  value="<?= $form_data['middle_name'] ?? null ?>">
+    </div>
 
     <div class="form-group col">
       <label for="last_name">Last Name:</label>

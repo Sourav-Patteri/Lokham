@@ -40,9 +40,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                 <div class="col-lg-8 d-none d-lg-block">
                     <div class="h3">
 
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit, accusamus laboriosam obcaecati, fugit voluptatem quasi quas corrupti non explicabo officia amet iste illo voluptatibus quia. Vitae beatae ad illum consequuntur.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, sint. Praesentium numquam, porro, quos ex necessitatibus nihil consectetur, quidem blanditiis iure nisi vitae amet saepe aut incidunt minima facilis quaerat!</p>
-                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, sint. Praesentium numquam, porro, quos ex necessitatibus nihil consectetur, quidem blanditiis iure nisi vitae amet saepe aut incidunt minima facilis quaerat!</p> -->
+                    <p>A social issue is an issue that impacts an impressive number of people. It is a part of society that individuals are worried about and might want to get it changed. The worry of a social issue might be objective or abstract. A social issue emerges because of differing assessments of people dependent on what is seen as right. Social issue doesn't really allude to an evil to be explained, however it might be a point to be talked about. Social issues can be distinctive for various gatherings, social orders, nations and world.<br>
+                    </p>    
                     </div>
                 </div>
                 <div class="col-lg-4">

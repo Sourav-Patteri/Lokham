@@ -8,16 +8,16 @@
                 <nav id="Footer-nav" class="navbar navbar-expand-sm navbar-dark ">
                     <ul class="navbar-nav m-auto" >
                         <li class="nav-item" >
-                            <a class="nav-link" href="#home">Lokham</a>
+                            <a class="nav-link" href="<?=base_path ?>">Lokham</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#create-head-section">Sign Up</a>
-                        </li >
-                        <li class="nav-item">
-                            <a class="nav-link" href="#share-head-section">Log In</a>
+                            <a class="nav-link" href="<?=base_path ?> ./users/new.php">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#share-head-section">Contact</a>
+                            <a class="nav-link" href="<?=base_path ?> ./sessions/login.php">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=base_path ?> ./contact.php">Contact</a>
                         </li>
                     </ul>
                 </nav>
