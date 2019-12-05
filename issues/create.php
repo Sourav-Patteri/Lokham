@@ -56,7 +56,7 @@
   $issue_id = $conn->lastInsertId();//Returns the ID of the last inserted row or sequence value
   // $conn = null;
 
-  redirect_with_success(base_path . "/issues/show.php?id={$_POST['id']}",  "You have successfully posted your issue");
+  redirect_with_success(base_path . "/issues",  "You have successfully posted your issue");
 
 
       

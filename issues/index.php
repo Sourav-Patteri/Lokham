@@ -8,14 +8,20 @@
     // $conn = connect();
 
     $current_page = $_GET['page'] ?? 1;
-    $num_of_posts = 10;
-    $offset = $num_of_posts * ($current_page - 1);
+    $num_of_issues = 10;
+    $offset = $num_of_issues * ($current_page - 1);
 
-    $sql = "SELECT *, issues.issue_id as id, issues.updated_at as updated_at FROM issues JOIN users ON issues.user_id = users.id JOIN ratings ON ratings.rating_id = users.id";
-    $sql .= " ORDER BY ratings.rating DESC LIMIT {$offset}, {$num_of_posts}";
+    // $sql = "SELECT *, issues.issue_id, issues.updated_at as updated_at FROM issues 
+    //         JOIN users ON issues.user_id = users.id JOIN ratings ON ratings.rating_id = users.id
+    //         ORDER BY ratings.rating DESC LIMIT {$offset}, {$num_of_issues}";
+    $sql = "SELECT * FROM issues 
+            JOIN users ON issues.user_id = users.id JOIN ratings ON issues.rating_id = ratings.rating_id  
+            ORDER BY ratings.rating DESC LIMIT {$offset}, {$num_of_issues}";
     $issues = Connect::query($sql);
-    $post_count = $conn->query($sql)->rowCount();
-    $num_of_pages = ceil($post_count / $num_of_posts);
+    $issues = $conn->query($sql)->fetchAll();
+    $issue_count = $conn->query($sql)->rowCount();
+    $num_of_pages = ceil($issue_count / $num_of_issues);
+    var_dump($issues);
     ?>
 <?php include_once(ROOT . '/partials/_header.php') ?>
 
