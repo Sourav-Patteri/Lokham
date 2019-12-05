@@ -11,11 +11,12 @@
   <header class="mt-5">
     <h1>Register a New account</h1>
     <hr>
+    <?php if (ADMIN): ?>
     <small>
       <a href="<?= base_path ?>/users/"><i class="fa fa-chevron-left"></i>&nbsp;Back to users...</a>
     </small>
+    <?php endif ?>
   </header>
-
   <div class="row">
     <div class="col-sm-8 border">
       <?php include(ROOT . '/users/_form.php') ?>

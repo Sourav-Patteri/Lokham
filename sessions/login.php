@@ -27,7 +27,7 @@
   </section>
 
   <div>
-    <small> Haven't signed up yet? No Problemo!<a href="<?= base_path ?>/sessions/register.php">Click here to Sign Up</a>!</small>
+    <small> Haven't signed up yet? No Problemo! <a href="<?= base_path ?>\users\new.php"> Click here to Sign Up</a>!</small>
   </div>
 </div>
 

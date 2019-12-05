@@ -12,9 +12,11 @@
   <header class="mt-5">
     <h1>Post a New Issue</h1>
     <hr>
+    <?php if (ADMIN): ?>
     <small>
       <a href="<?= base_path ?>/users/"><i class="fa fa-chevron-left"></i>&nbsp;Back to users...</a>
     </small>
+    <?php endif ?>
   </header>
   <p>
     <a href="<?= base_path?>/issues/index.php">Return to archives</a>
@@ -24,7 +26,7 @@
     <!-- <div class="col-sm-4">
 
     </div> -->
-    <div class="col-sm-12 border p-4">
+    <div class="col-sm-6 border p-4">
       <?php include(ROOT . '/issues/_form.php') ?>
     </div>
   </div>
