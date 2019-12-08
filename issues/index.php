@@ -14,12 +14,12 @@
     // $sql = "SELECT *, issues.issue_id, issues.updated_at as updated_at FROM issues 
     //         JOIN users ON issues.user_id = users.id JOIN ratings ON ratings.rating_id = users.id
     //         ORDER BY ratings.rating DESC LIMIT {$offset}, {$num_of_issues}";
-    $sql = "SELECT * FROM issues 
+    $sql = "SELECT * FROM lokham.issues 
             JOIN users ON issues.user_id = users.id";
             // $sql = "SELECT * FROM issues JOIN users ON issues.user_id = users.id JOIN ratings ON issues.user_id = ratings.user_id  
             // ORDER BY ratings.rating DESC LIMIT {$offset}, {$num_of_issues}";
     $issues = Connect::query($sql);
-    $issues = $conn->query($sql)->fetchAll();
+    $issues = $conn->query($sql);
     $issue_count = $conn->query($sql)->rowCount();
     $num_of_pages = ceil($issue_count / $num_of_issues);
     ?>
@@ -41,7 +41,7 @@
       <div class="card mb-2">
         <div class="card-body d-flex flex-row justify-content-between align-items-center">
           <div class="mr-4">
-            <img src="https://via.placeholder.com/350x300" alt="asdf" class="img-fluid img-thumbnail">
+            <img src="<?=$issue['image']?>" alt="Posted Image" class="img-fluid img-thumbnail" height="300px" width="300px">
           </div>
           <div>
             <div class="card-title">
@@ -84,5 +84,3 @@
 </nav>
 
 <?php include_once(ROOT . '/partials/_footer.php') ?>
-
-?>

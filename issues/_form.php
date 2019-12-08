@@ -13,27 +13,32 @@
 <!-- // just the form -->
 
 <!-- add hidden id if _action isset -->
-<form action="<?= $_action?>" method="post">
-
-<?php if (isset($_GET['id'])): ?>
+<form action="<?= $_action?>" method="post" enctype="multipart/form-data">
+<?php if ((ADMIN) && isset($_GET['id'])): ?>
     <input type="hidden" name="id" value="<?= $form_data['id']?>">
   <?php endif ?>
   <?php if (isset($_action)): ?>
     <input type="hidden" name="id">
   <?php endif ?>
-
   <div class="row">    
+  <div class="form-group col">
+    <label for="title">Title:</label>
+    <!-- Step 4: Add value if there's a value in form_data for this field -->
+    <input type="text" class="form-control" name="title" placeholder="Enter Issue Title" value="<?= $form_data['title'] ?? null?>">
+  </div>
   <div class="form-group col">
     <label for="title">Issue:</label>
     <!-- Step 6: Prepopulate the value if there's a value in form_data for this textarea -->
-    <textarea name="content" class="summernote" required value="<?= $issue_data['content'] ?? null ?>">
+    <textarea name="content" class="summernote" required value="<?= $form_data['content'] ?? null ?>">
       <?= $form_data['content'] ?? null ?>
     </textarea>
   </div>
-
+  <div class="custom-file m-2">
+      <input type="file" name="uploads" class="custom-file-input" id="uploads">
+      <label for="uploads" class="custom-file-label">Choose File:</label>
   </div>
-
-    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
+    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
 </form>
 
 <script>

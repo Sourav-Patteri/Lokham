@@ -4,7 +4,7 @@
   // Get the posts (but we'll also need the author)
   include_once(ROOT . "/includes/_connect.php");
 
-  $sql = "SELECT *, issues.issue_id as id FROM issues
+  $sql = "SELECT *, issues.issue_id as id FROM lokham.issues
     JOIN users ON issues.user_id = users.id
     WHERE issues.issue_id = :id";
   $stmt = $conn->prepare($sql);
@@ -41,7 +41,7 @@
   <section class="ml-5">
     <div class="row">
       <div class="col-4">
-        <img src="https://via.placeholder.com/350x200" alt="asdf" class="mr-4 img-fluid">
+        <img src="<?=$issue['image']?>" alt="Posted Image" class="mr-4 img-fluid">
       </div>
 
       <div class="col-8">
