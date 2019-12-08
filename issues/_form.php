@@ -14,11 +14,8 @@
 
 <!-- add hidden id if _action isset -->
 <form action="<?= $_action?>" method="post" enctype="multipart/form-data">
-<?php if ((ADMIN) && isset($_GET['id'])): ?>
-    <input type="hidden" name="id" value="<?= $form_data['id']?>">
-  <?php endif ?>
   <?php if (isset($_action)): ?>
-    <input type="hidden" name="id">
+    <input type="hidden" name="issue_id" value="<?= $form_data['id'] ?? null?>">
   <?php endif ?>
   <div class="row">    
   <div class="form-group col">

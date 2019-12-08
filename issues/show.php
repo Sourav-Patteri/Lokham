@@ -1,10 +1,10 @@
 <?php include_once(dirname(__DIR__) . '/_config.php') ?>
 
 <?php
-  // Get the posts (but we'll also need the author)
+  // Get the issues (but we'll also need the author)
   include_once(ROOT . "/includes/_connect.php");
 
-  $sql = "SELECT *, issues.issue_id as id FROM lokham.issues
+  $sql = "SELECT *, issues.issue_id as issue_id FROM lokham.issues
     JOIN users ON issues.user_id = users.id
     WHERE issues.issue_id = :id";
   $stmt = $conn->prepare($sql);
@@ -12,11 +12,12 @@
   $stmt->execute();
   $issue = $stmt->fetch();
 
-  $sql = "SELECT *, comments.comment_id as id FROM comments
-    JOIN users ON comments.user_id = users.id  
+  $sql = "SELECT *, comments.comment_id as id  FROM lokham.comments
+    JOIN users ON comments.user_id = users.id
     JOIN ratings ON comments.rating_id = ratings.rating_id
-    WHERE comments.issue_id = {$issue['id']}";
-  $comments = Connect::query($sql);
+    WHERE comments.issue_id = {$issue['issue_id']}";
+    // $comments = Connect::query($sql);
+    $comments = $conn->query($sql)->fetchAll();
 ?>
 
 <?php include_once(ROOT . '/partials/_header.php') ?>
@@ -54,14 +55,14 @@
 
   <p class="ml-5">
     <a href="<?= base_path ?>/issues/">Return to archives...</a>
-    <?php if (ADMIN && $_SESSION['user']['id'] === $issue['user_id']): ?>
+    <?php if (ADMIN || isset($_SESSION['user']['id']) && $_SESSION['user']['id'] === $issue['user_id']): ?>
       |
-      <a href="<?= base_path ?>/issues/edit.php?id=<?= $issue['id'] ?>">
+      <a href="<?= base_path ?>/issues/edit.php?id=<?= $issue['issue_id'] ?>">
         <i class="fa fa-pencil"></i>
         edit
       </a>
       |
-      <a href="<?= base_path ?>/issues/destroy.php?id=<?= $issue['id'] ?>" onclick="return confirm('Are you sure you want to delete this issue?')">
+      <a href="<?= base_path ?>/issues/destroy.php?id=<?= $issue['issue_id'] ?>" onclick="return confirm('Are you sure you want to delete this issue?')">
         <i class="fa fa-trash"></i>
         delete
       </a>

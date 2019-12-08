@@ -1,6 +1,6 @@
 <?php include_once(dirname(__DIR__) . '/_config.php') ?>
-<?php if (!AUTH) redirect(base_path . "/issues") ?>
-<?php// if (!isset($issue['id'])) redirect("/issues") ?>
+<?php if (!AUTH) redirect(base_path . "/issues") 
+// if (!isset($issue['id'])) redirect("/issues") ?>
 
 <?php $form_data = $form_data ?? null ?>
 <?php $_action = $_action ?? base_path . "/comments/create.php" ?>
@@ -8,7 +8,7 @@
 <div class="row mb-5">
   <div class="col-sm-9">
     <form action="<?= $_action ?> comments\create.php" method="post">
-      <input type="hidden" name="issue_id" value="<?= $issue['id'] ?? null ?>">
+      <input type="hidden" name="issue_id" value="<?= $issue['issue_id'] ?? null ?>">
       
       <!-- <div class="form-group">
         <label for="title">Title:</label>

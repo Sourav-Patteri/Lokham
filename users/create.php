@@ -69,7 +69,7 @@ if (count($errors) > 0) {
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   // Check if image file is a actual image or fake image
-       if(isset($_FILES["uploads"])) {
+       if(isset($_POST['uploads'])) {
         $check = getimagesize($_FILES["uploads"]["tmp_name"]);
         if($check !== false) {
             echo "File is an image - " . $check["mime"] . ".";
@@ -78,7 +78,7 @@ if (count($errors) > 0) {
             echo "File is not an image.";
             $uploadOk = 0;
         }
-    
+    }
   // Check if file already exists
   if (file_exists($target_file)) {
       $errors[] = "Sorry, file already exists.";
@@ -103,7 +103,7 @@ if (count($errors) > 0) {
       move_uploaded_file($_FILES["uploads"]["tmp_name"], $target_file);
   }
 
-}  
+  
   if(count($errors) > 0 ){
     $_SESSION['form_data'] = $_POST;
     redirect_with_errors(base_path . '/users/new.php', $errors);

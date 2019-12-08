@@ -40,7 +40,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
   
   <div class="row">
   <div class="col-4">
-      <img src="<?=$user['profile_image']?>"  height="250px" width="300px">
+      <img src="<?=$user['profile_image']?>" alt="Your Profile Image"  height="250px" width="300px">
     </div>
     <div class="col-4">
       <table class="table table-striped">

@@ -41,8 +41,6 @@
 
   // Include our connection and call our defined function
   include_once(ROOT . "/includes/_connect.php");
-  $conn = connect();
-
   // Prepare, bind and execute our SQL
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':content', $_issue['content'], PDO::PARAM_STR);

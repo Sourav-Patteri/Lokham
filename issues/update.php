@@ -41,18 +41,20 @@
   // Include our connection and call our defined function
   include_once(ROOT . "/includes/_connect.php");
   // Get the post using the id and user id as our clause
-  $sql = "SELECT * FROM issues WHERE issue_id = :id AND user_id = {$_SESSION['user']['id']}";
-  $stmt = $conn->prepare($sql);
-  $stmt->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
-  $stmt->execute();
-  $issue = $stmt->fetch();
+  
+  // $sql = "SELECT * FROM issues WHERE issue_id = :id AND user_id = {$_SESSION['user']['id']}";
+  // $stmt = $conn->prepare($sql);
+  // $stmt->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
+  // $stmt->execute();
+  // $issue = $stmt->fetch();
 
   // Verify we have a post
-  if (!$issue) {
-    $errors[] = "Please provide a valid post id.";
-    // Send them to issues because they're not editing a valid post they own
-    redirect_with_errors(base_path . '/issues', "Please provide a valid post id.", $errors);
-  }
+  
+  // if (!$issue) {
+  //   $errors[] = "Please provide a valid post id.";
+  //   // Send them to issues because they're not editing a valid post they own
+  //   redirect_with_errors(base_path . '/issues', "Please provide a valid post id.", $errors);
+  // }
 
   /*
     Create the post
@@ -68,4 +70,4 @@
   $stmt->execute();
 
   // Send bacn a success message
-  redirect_with_success(base_path . "/issues/show.php?id={$_POST['id']}", "You have successfully created a new post.");
+  redirect_with_success(base_path . "/issues/show.php?id={$_POST['issue_id']}", "You have successfully created a new post.");
