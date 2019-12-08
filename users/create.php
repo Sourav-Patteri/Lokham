@@ -32,18 +32,18 @@
   }
 // regex expressions supposed to filter password but not working please resolve if understand
 
-  if ( (strlen($_POST['password']) < 6) || (strlen($_POST['password']) > 64) ) {
-    $errors[] = "The password should contain 6 - 64 charcters";
-  }
-  if (!preg_match("^(?=.*[A-Z]).*$", $_POST['password'])){
-    $errors[] = "Password must contain a capital letter";
-  } 
-  if (!preg_match("^(?=.*\d).*$", $_POST['password'])) {
-  $errors[] =  "Password must contain a number";
-  }  
-  if (!preg_match("^(?=.*[\@\$\%\^\&\*\(\)\-\+\!\[\]\{\}\|]).*$", $_POST['password'])){
-  $errors[] =  "Password must contain a symbol";
-  }
+  // if ( (strlen($_POST['password']) < 6) || (strlen($_POST['password']) > 64) ) {
+  //   $errors[] = "The password should contain 6 - 64 charcters";
+  // }
+  // if (!preg_match("^(?=.*[A-Z]).*$", $_POST['password'])){
+  //   $errors[] = "Password must contain a capital letter";
+  // } 
+  // if (!preg_match("^(?=.*\d).*$", $_POST['password'])) {
+  // $errors[] =  "Password must contain a number";
+  // }  
+  // if (!preg_match("^(?=.*[\@\$\%\^\&\*\(\)\-\+\!\[\]\{\}\|]).*$", $_POST['password'])){
+  // $errors[] =  "Password must contain a symbol";
+  // }
 
 if (count($errors) > 0) {
     $_SESSION['form_data'] = $_POST;
@@ -73,7 +73,7 @@ $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':first_name', $_POST['first_name'], PDO::PARAM_STR);
 $stmt->bindParam(':middle_name', $_POST['middle_name'], PDO::PARAM_STR);
-$stmt->bindParam(':last_name', $_POST['last_name'], PDO::PARAM_STR);
+$stmt->bindParam(':last_name', $_POST['last_name'], PDO::PARAM_STR);  
 $stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
 $stmt->bindParam(':password', $password, PDO::PARAM_STR);
 $stmt->execute();

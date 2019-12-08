@@ -84,5 +84,3 @@
 </nav>
 
 <?php include_once(ROOT . '/partials/_footer.php') ?>
-
-?>

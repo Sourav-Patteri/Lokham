@@ -13,7 +13,7 @@
 <!-- // just the form -->
 
 <!-- add hidden id if _action isset -->
-<form action="<?= $_action?>" method="post">
+<form action="<?= $_action?>" method="post" enctype="multipart/form-data">
 
 <?php if (isset($_GET['id'])): ?>
     <input type="hidden" name="id" value="<?= $form_data['id']?>">
@@ -30,10 +30,13 @@
       <?= $form_data['content'] ?? null ?>
     </textarea>
   </div>
-
+  <div class="custom-file m-2">
+      <input type="file" name="uploads" class="custom-file-input" id="uploads">
+      <label for="uploads" class="custom-file-label">Choose File:</label>
+    </div>
   </div>
 
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" name="submit">Submit</button>
 </form>
 
 <script>
