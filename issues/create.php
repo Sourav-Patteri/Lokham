@@ -25,7 +25,7 @@
   //Return to the form if there are errors (we do this here because we don't want to run malicious code against our database)
   // count the $errors array
   if (count($errors) > 0) {
-    $_SESSION['issue_data'] = $_POST;
+    $_SESSION['form_data'] = $_issue;
     redirect_with_errors(base_path . '/issues/new.php', $errors);
   }
     /*
@@ -36,7 +36,7 @@
   // foreach (['content'] as $field) {
   //     $_POST[$field] = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
   //   }
-  $_POST['content'] = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $_POST['content']);
+  $_issue['content'] = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $_issue['content']);
 
   if(count($errors) > 0 ){
     redirect_with_errors(base_path . '/issues/new.php', $errors);
@@ -46,12 +46,19 @@
   // insert the Issue to the database
   include_once(ROOT . "/includes/_connect.php");
 
-  $sql = "INSERT INTO issues (user_id, content) VALUES (:user_id, :content)";
-  $stmt = $conn->prepare($sql);
+  $sql = "INSERT INTO issue
+  (title, status, content, user_id) VALUES (
+    :title,
+    :status,
+    :content,
+    {$_SESSION['user']['id']}
+  )";
   // how to pass the user id 
   // the session user id is the user id and we do have a foreign key in issues table so it should be exactly like this??
-  $stmt->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
-  $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':title', $_issue['title'], PDO::PARAM_STR);
+  $stmt->bindParam(':status', $_issue['status'], PDO::PARAM_STR);
+  $stmt->bindParam(':content', $_issue['content'], PDO::PARAM_STR);
   $stmt->execute();
   $issue_id = $conn->lastInsertId();//Returns the ID of the last inserted row or sequence value
   //do it using sql properly

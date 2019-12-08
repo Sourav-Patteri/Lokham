@@ -29,6 +29,11 @@
       <option value="published"><?=(isset($form_data['status']) && $form_data['status'] === "published") ? "selected" : null?>Published</option>
     </select>
   </div>
+  
+  <div class="form-group col">
+      <label for="last_name">Title:</label>
+      <input type="text" class="form-control" id="title" name="title" placeholder="Title"  value="<?= $form_data['title'] ?? null ?>">
+    </div>
 
   <div class="row">    
   <div class="form-group col">

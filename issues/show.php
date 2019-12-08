@@ -32,12 +32,14 @@
       <small>By <?= $issue['first_name'] ?> <?= $issue['last_name'] ?></small>
     </h1>
   </header>
-  <hr class="m-5">
-
+  
   <section class="ml-5">
     <div class="row">
       <div class="col-4">
         <img src="https://via.placeholder.com/350x200" alt="asdf" class="mr-4 img-fluid">
+      </div>
+      <div class="col-8">
+        <?= $issue['title'] ?>
       </div>
 
       <div class="col-8">
@@ -60,6 +62,7 @@
         <i class="fa fa-trash"></i>
         delete
       </a>
+      |
     <?php endif ?>
   </p>
 

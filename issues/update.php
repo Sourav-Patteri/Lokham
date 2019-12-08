@@ -36,14 +36,14 @@
     including HTML tags. Instead we'll use preg_replace
     which will allow us to strip out only the script tags.
   */
-  $_POST['content'] = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $_POST['content']);
+  $_issue['content'] = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $_issue['content']);
 
   // Include our connection and call our defined function
   include_once(ROOT . "/includes/_connect.php");
   // Get the post using the id and user id as our clause
   $sql = "SELECT * FROM issues WHERE issue_id = :id AND user_id = {$_SESSION['user']['id']}";
   $stmt = $conn->prepare($sql);
-  $stmt->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
+  $stmt->bindParam(':id', $_issue['id'], PDO::PARAM_INT);
   $stmt->execute();
   $issue = $stmt->fetch();
 
@@ -63,9 +63,11 @@
 
   // Prepare, bind and execute our SQL
   $stmt = $conn->prepare($sql);
-  $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
-  $stmt->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
+  $stmt->bindParam(':title', $_issue['title'], PDO::PARAM_STR);
+  $stmt->bindParam(':status', $_issue['status'], PDO::PARAM_STR);
+  $stmt->bindParam(':content', $_issue['content'], PDO::PARAM_STR);
+  $stmt->bindParam(':id', $_issue['id'], PDO::PARAM_INT);
   $stmt->execute();
 
   // Send bacn a success message
-  redirect_with_success(base_path . "/issues/show.php?id={$_POST['id']}", "You have successfully created a new post.");
+  redirect_with_success(base_path . "/issues/show.php?id={$_issue['id']}", "You have successfully created a new post.");
