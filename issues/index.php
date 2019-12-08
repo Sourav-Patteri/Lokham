@@ -41,7 +41,7 @@
       <div class="card mb-2">
         <div class="card-body d-flex flex-row justify-content-between align-items-center">
           <div class="mr-4">
-            <img src="<?=$issue['image']?>" alt="<?= $issue['image'] ?>" class="img-fluid img-thumbnail" height="300px" width="300px">
+            <img src="<?=$issue['image']?>" alt="Posted Image" class="img-fluid img-thumbnail" height="300px" width="300px">
           </div>
           <div>
             <div class="card-title">

@@ -41,7 +41,7 @@
   <section class="ml-5">
     <div class="row">
       <div class="col-4">
-        <img src="<?=$issue['image']?>" alt="<?=$issue['image']?>Posted Image" class="mr-4 img-fluid">
+        <img src="<?=$issue['image']?>" alt="Posted Image" class="mr-4 img-fluid">
       </div>
 
       <div class="col-8">

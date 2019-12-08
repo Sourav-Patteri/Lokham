@@ -36,7 +36,7 @@
   <div class="custom-file m-2">
       <input type="file" name="uploads" class="custom-file-input" id="uploads">
       <label for="uploads" class="custom-file-label">Choose File:</label>
-    </div>
+  </div>
   </div>
     <button class="btn btn-primary" type="submit" name="submit">Submit</button>
 </form>

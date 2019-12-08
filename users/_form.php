@@ -24,7 +24,7 @@ $form_data = $form_data ?? null;
 
 <!-- add hidden id if _action isset but why?? -->
 
-<form action="<?= $_action ?? base_path . "/users/create.php" ?>" method="post">
+<form action="<?= $_action ?? base_path . "/users/create.php" ?>" method="post" enctype="multipart/form-data">
   <div class="row">
     
     <?php if (isset($_action)): ?>
@@ -46,7 +46,10 @@ $form_data = $form_data ?? null;
       <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name"  value="<?= $form_data['last_name'] ?? null ?>">
     </div>
   </div>
-
+  <div class="custom-file m-2">
+      <input type="file" name="uploads" class="custom-file-input" id="uploads">
+      <label for="uploads" class="custom-file-label">Choose File:</label>
+  </div>
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" value="<?= $form_data['email'] ?? null ?>">
