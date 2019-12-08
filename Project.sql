@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `lokham`.`issues` (
 	`updated_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
      PRIMARY KEY (`issue_id`)) ENGINE = INNODB DEFAULT CHARSET=UTF8;
      
+     ALTER TABLE `issues` ADD `status` ENUM('draft','published') NOT NULL AFTER `content`;
 -- Constraints for table `issues`
 
   ALTER TABLE `lokham`.`issues`
@@ -54,6 +55,8 @@ CREATE TABLE IF NOT EXISTS `lokham`.`issues` (
   REFERENCES `lokham`.`users` (`id`)
   ON UPDATE CASCADE
   ON DELETE CASCADE;
+
+  
   
 INSERT INTO `issues` (`issue_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Earth is dying', '2019-11-04 08:50:02', '2019-11-04 15:30:20');

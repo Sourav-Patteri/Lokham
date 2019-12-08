@@ -16,7 +16,7 @@
     JOIN users ON comments.user_id = users.id  
     JOIN ratings ON comments.rating_id = ratings.rating_id
     WHERE comments.issue_id = {$issue['id']}";
-  $comments = Connect::query($sql);
+    $comments = Connect::query($sql);
 ?>
 
 <?php include_once(ROOT . '/partials/_header.php') ?>
@@ -28,14 +28,10 @@
     </div>
 
     <h1>
-      <?php
-    //   echo $issue['title'] 
-      ?>
       <br>
       <small>By <?= $issue['first_name'] ?> <?= $issue['last_name'] ?></small>
     </h1>
   </header>
-
   <hr class="m-5">
 
   <section class="ml-5">
@@ -49,11 +45,10 @@
       </div>
     </div>
   </section>
-
-  <hr class="m-5">
-
+  </article>
   <p class="ml-5">
     <a href="<?= base_path ?>/issues/">Return to archives...</a>
+    </p>
     <?php if (ADMIN && $_SESSION['user']['id'] === $issue['user_id']): ?>
       |
       <a href="<?= base_path ?>/issues/edit.php?id=<?= $issue['id'] ?>">
@@ -67,43 +62,41 @@
       </a>
     <?php endif ?>
   </p>
-</article>
 
-<hr class="m-5">
-
-<div class="container">
-  <?php
-    if (AUTH) {
-    //   include_once(ROOT . "/comments/_form.php");
-    }
-  ?>
-</div>
-
-<?php if (isset($comments) && count($comments) > 0): ?>
-  <div class="container" id="comments">
-    <h2>Comments</h2>
-
-    <div class="mt-5">
-      <ul class="list-group">
-        <?php foreach ($comments as $comment): ?>
-          <li class="list-group-item">
-            <h5 class="mb-4">
-              <small>&nbsp;&mdash;&nbsp;<?= $comment['first_name'] ?> <?= $comment['last_name'] ?></small>
-            </h5>
-            <hr>
-            <div class="ml-5 d-flex flex-row justify-content-between align-items-center">
-              <p>
-              <?= $comment['rating'] ?>
-              </p>
-              <p>
-                <?= $comment['comment'] ?>
-              </p>
-            </div>
-          </li>
-        <?php endforeach ?>
-      </ul>
-    </div>
+  <div class="container">
+    <?php
+      if (AUTH) {
+      include_once(ROOT . "/comments/_form.php");
+      }
+    ?>
   </div>
-<?php endif ?>
-
+  
+  <article>
+    <?php if (isset($comments) && count($comments) > 0): ?>
+      <div class="container" id="comments">
+        <h2>Comments</h2>
+        <div class="mt-5">
+          <ul class="list-group">
+            <?php foreach ($comments as $comment): ?>
+              <li class="list-group-item">
+                <h5 class="mb-4">
+                  <small>&nbsp;&mdash;&nbsp;<?= $comment['first_name'] ?> <?= $comment['last_name'] ?></small>
+                </h5>
+                <hr>
+                <div class="ml-5 d-flex flex-row justify-content-between align-items-center">
+                  <p>
+                    <?= $comment['rating'] ?>
+                  </p>
+                  <p>
+                    <?= substr($comment['comment'], 0, 150) ?>&hellip;
+                    <a href="<?= base_path ?>/comments/show.php?id=<?= $issue['id'] ?>">more</a>
+                  </p>
+                </div>
+              </li>
+            <?php endforeach ?>
+          </ul>
+        </div>
+      </div>
+    <?php endif ?>
+  </article>
 <?php include_once(ROOT . '/partials/_footer.php') ?>

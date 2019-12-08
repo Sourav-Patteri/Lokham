@@ -22,6 +22,14 @@
     <input type="hidden" name="id">
   <?php endif ?>
 
+  <div class="form-group col">
+    <label for="title">Status:</label>
+    <select name="status" class="form-control">
+      <option value="draft" <?= isset($form_data['status']) && $form_data['status'] === "draft" ? "selected" : null; ?>>Draft</option>
+      <option value="published"><?=(isset($form_data['status']) && $form_data['status'] === "published") ? "selected" : null?>Published</option>
+    </select>
+  </div>
+
   <div class="row">    
   <div class="form-group col">
     <label for="title">Issue:</label>

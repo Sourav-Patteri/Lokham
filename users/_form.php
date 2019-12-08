@@ -22,6 +22,7 @@ if ($file_name === "_form.php") redirect(base_path . '/users/new.php'); // redir
 $form_data = $form_data ?? null;
 ?>
 
+
 <!-- add hidden id if _action isset but why?? -->
 
 <form action="<?= $_action ?? base_path . "/users/create.php" ?>" method="post">
@@ -60,6 +61,11 @@ $form_data = $form_data ?? null;
   <div class="form-group">
     <label for="password_confirmation">Password Confirmation:</label>
     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+  </div>
+
+  <div class="form-group">
+    <label for="image_upload">Choose your Profile Picture:</label>
+    <input type="file" class="form-control" id="image" name="image">
   </div>
 
   <button class="btn btn-primary" type="submit">Submit</button>

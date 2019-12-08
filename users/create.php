@@ -32,18 +32,18 @@
   }
 // regex expressions supposed to filter password but not working please resolve if understand
 
-  if ( (strlen($_POST['password']) < 6) || (strlen($_POST['password']) > 64) ) {
-    $errors[] = "The password should contain 6 - 64 charcters";
-  }
-  if (!preg_match("^(?=.*[A-Z]).*$", $_POST['password'])){
-    $errors[] = "Password must contain a capital letter";
-  } 
-  if (!preg_match("^(?=.*\d).*$", $_POST['password'])) {
-  $errors[] =  "Password must contain a number";
-  }  
-  if (!preg_match("^(?=.*[\@\$\%\^\&\*\(\)\-\+\!\[\]\{\}\|]).*$", $_POST['password'])){
-  $errors[] =  "Password must contain a symbol";
-  }
+  // if ( (strlen($_POST['password']) < 6) || (strlen($_POST['password']) > 64) ) {
+  //   $errors[] = "The password should contain 6 - 64 charcters";
+  // }
+  // if (!preg_match("^(?=.*[A-Z]).*$", $_POST['password'])){
+  //   $errors[] = "Password must contain a capital letter";
+  // } 
+  // if (!preg_match("^(?=.*\d).*$", $_POST['password'])) {
+  // $errors[] =  "Password must contain a number";
+  // }  
+  // if (!preg_match("^(?=.*[\@\$\%\^\&\*\(\)\-\+\!\[\]\{\}\|]).*$", $_POST['password'])){
+  // $errors[] =  "Password must contain a symbol";
+  // }
 
 if (count($errors) > 0) {
     $_SESSION['form_data'] = $_POST;
@@ -67,6 +67,8 @@ if (count($errors) > 0) {
   foreach (['first_name','middle_name', 'last_name'] as $field) {
     $_POST[$field] = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
   }
+
+move_uploaded_file($_FILES['image'][0]['tmpname'], base_path.'/uploads/'.$_FILES['image'][0]['name']);
   
 $sql = "INSERT INTO users (first_name, last_name, middle_name, email, password) VALUES (:first_name, :middle_name, :last_name, :email, :password)";
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
