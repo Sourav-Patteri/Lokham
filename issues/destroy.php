@@ -1,10 +1,12 @@
 <?php
 
   include_once(dirname(__DIR__) . '/_config.php');
-  not_admin_redirect(base_path . '/issues');
+  // not_admin_redirect(base_path . '/issues');
 
+    // Step 2: Include our connection and call our defined function
+    include_once(ROOT . "/includes/_connect.php");
   // Get the post using the id and user id as our clause
-  $sql = "SELECT * FROM issues WHERE id = :id AND user_id = {$_SESSION['user']['id']}";
+  $sql = "SELECT * FROM issues WHERE issue_id = :id AND user_id = {$_SESSION['user']['id']}";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
   $stmt->execute();
@@ -20,7 +22,7 @@
   /*
     Create the post
   */
-  $sql = "DELETE FROM issues WHERE id = :id";
+  $sql = "DELETE FROM issues WHERE issue_id = :id";
 
   // Prepare, bind and execute our SQL
   $stmt = $conn->prepare($sql);

@@ -116,7 +116,7 @@ if (count($errors) > 0) {
     $_POST[$field] = filter_var($_POST[$field], FILTER_SANITIZE_STRING);
   }
   
-$sql = "INSERT INTO users (first_name, last_name, middle_name, profile_image, email, password) VALUES (:first_name, :middle_name, :last_name, :profile_image, :email, :password)";
+$sql = "INSERT INTO users (first_name, last_name, middle_name, profile_image, email, password) VALUES (:first_name, :last_name, :middle_name, :profile_image, :email, :password)";
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':first_name', $_POST['first_name'], PDO::PARAM_STR);
