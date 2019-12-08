@@ -8,7 +8,7 @@
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
   $stmt->execute();
-  $post = $stmt->fetch();
+  $issue = $stmt->fetch();
 
   // Verify we have a issue
   if (!$issue) {
