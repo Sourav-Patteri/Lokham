@@ -84,7 +84,6 @@
   $stmt->bindParam(':first_name', $_POST['first_name'], PDO::PARAM_STR); // bind the parameter
   $stmt->bindParam(':last_name', $_POST['last_name'], PDO::PARAM_STR); // bind the parameter
   $stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR); // bind the parameter
-  $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR); // bind the parameter
   $stmt->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
   if (isset($password)) $stmt->bindParam(':password', $password, PDO::PARAM_STR);
   $stmt->execute(); // execute
