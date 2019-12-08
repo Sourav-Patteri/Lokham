@@ -25,7 +25,7 @@
   //Return to the form if there are errors (we do this here because we don't want to run malicious code against our database)
   // count the $errors array
   if (count($errors) > 0) {
-    $_SESSION['issue_data'] = $_POST;
+    $_SESSION['form_data'] = $_POST;
     redirect_with_errors(base_path . '/issues/new.php', $errors);
   }
     /*
@@ -49,7 +49,7 @@
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   // Check if image file is a actual image or fake image
-  if(isset($_POST["submit"])) {
+  if(isset($_POST["uploads"])) {
       $check = getimagesize($_FILES["uploads"]["tmp_name"]);
       if($check !== false) {
           echo "File is an image - " . $check["mime"] . ".";
@@ -58,14 +58,14 @@
         $errors[] = "File is not an image.";
           $uploadOk = 0;
       }
-  }
+  
   // Check if file already exists
   if (file_exists($target_file)) {
     $errors[] = "Sorry, file already exists.";
       $uploadOk = 0;
   }
   // Check file size
-  if ($_FILES["uploads"]["size"] > 500000) {
+  if ($_FILES["uploads"]["size"] > 5000000) {
     $errors[] =  "Sorry, your file is too large.";
       $uploadOk = 0;
   }
@@ -86,7 +86,9 @@
         $errors[] = "Sorry, there was an error uploading your file.";
       }
   }
+}
   if(count($errors) > 0 ){
+    $_SESSION['form_data'] = $_POST;
     redirect_with_errors(base_path . '/issues/new.php', $errors);
   }
   ?>
@@ -95,18 +97,29 @@
   // Get the Id of the user to pass to the database
   // insert the Issue to the database
   include_once(ROOT . "/includes/_connect.php");
-
-  $sql = "INSERT INTO issues (user_id, content) VALUES (:user_id, :content)";
+  $sql = "INSERT INTO issues (title, image, content, user_id) VALUES (
+    :title,
+    :image,
+    :content,
+    {$_SESSION['user']['id']}
+  )";
   $stmt = $conn->prepare($sql);
   // how to pass the user id 
   // the session user id is the user id and we do have a foreign key in issues table so it should be exactly like this??
-  $stmt->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_INT);
+  $stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
+  $stmt->bindParam(':image', $target_file, PDO::PARAM_STR);
   $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
   $stmt->execute();
   $issue_id = $conn->lastInsertId();//Returns the ID of the last inserted row or sequence value
   //do it using sql properly
   // $conn = null;
 
+  // $sql = "INSERT INTO issues (user_id, content) VALUES ({$_SESSION['user']['id']}, :content)";
+  // $stmt = $conn->prepare($sql);
+  // $stmt->bindParam(':content', $_POST['content'], PDO::PARAM_STR);
+  // $stmt->execute();
+  // $issue_id = $conn->lastInsertId();//Returns the ID of the last inserted row or sequence value
+  
   redirect_with_success(base_path . "/issues",  "You have successfully posted your issue");
 
 ?>

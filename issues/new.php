@@ -6,10 +6,7 @@
   $_active = "issues";
 ?>
 
-<?php include(ROOT . '/partials/_header.php');
-        var_dump($_FILES);
-
-?>
+<?php include(ROOT . '/partials/_header.php')?>
 
 <div class="container">
   <header class="mt-5">
