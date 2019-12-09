@@ -40,14 +40,14 @@ if (session_status() === PHP_SESSION_NONE) session_start();
   
   <div class="row">
   <div class="col-4">
-      <img src="<?=$user['profile_image']?>"  height="250px" width="300px">
+      <img src="<?=$user['profile_image'] ?? base_path . '/img/world_tree.jpg'?>"  height="250px" width="300px">
     </div>
     <div class="col-4">
       <table class="table table-striped">
         <tbody>
           <tr>
             <th>Name:</th>
-            <td><?= $user['first_name'] ?> <?= $user['last_name'] ?></td>
+            <td><?= $user['first_name'] ?> <?= $user['middle_name'] ?> <?= $user['last_name'] ?></td>
           </tr>
           <tr>
             <th>Email:</th>

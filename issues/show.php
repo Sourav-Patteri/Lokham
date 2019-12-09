@@ -94,6 +94,7 @@
             </h5>
             <hr>
             <div class="ml-5 d-flex flex-row justify-content-between align-items-center">
+            <img src="<?= $comment['profile_image'] ?? base_path . '/img/world_tree.jpg'?>" alt="placeholder" class="img-fluid img-thumbnail mr-2" style="max-width: 150px; border-radius: 150px;">
               <p class="lead">
                 <!-- sorry, thats how we made it work, will  change it soon :) -->
                 <?php 

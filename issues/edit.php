@@ -28,7 +28,7 @@
 <div class="container">
   <header class="mt-5">
     <h1>
-      Create New Blog
+      Edit your issue
     </h1>
   </header>
 
