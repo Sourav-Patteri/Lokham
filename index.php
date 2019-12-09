@@ -23,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
         left: 0;
         width: 100%;
         min-height: 700px;
-        background: rgba(260, 260, 260, .5)
+        background: rgba(260, 260, 260, .38)
     }
 
     #home-section .home-inner {
