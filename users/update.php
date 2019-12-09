@@ -66,7 +66,7 @@
   }
 
   // Attempt to write the user to the database
-  $sql = "UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email"; // a string containing our SQL
+  $sql = "UPDATE users SET first_name = :first_name, last_name = :last_name, middle_name = :middle_name, email = :email"; // a string containing our SQL
   if (!empty($_POST['password'])) {
     if ($_POST['password'] === $_POST['password_confirmation']) {
       $sql = $sql . ", password = :password";
@@ -83,8 +83,8 @@
   $stmt = $conn->prepare($sql); // prepare the statement
   $stmt->bindParam(':first_name', $_POST['first_name'], PDO::PARAM_STR); // bind the parameter
   $stmt->bindParam(':last_name', $_POST['last_name'], PDO::PARAM_STR); // bind the parameter
+  $stmt->bindParam(':middle_name', $_POST['middle_name'], PDO::PARAM_STR); // bind the parameter
   $stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR); // bind the parameter
-  $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR); // bind the parameter
   $stmt->bindParam(':id', $_POST['id'], PDO::PARAM_INT);
   if (isset($password)) $stmt->bindParam(':password', $password, PDO::PARAM_STR);
   $stmt->execute(); // execute

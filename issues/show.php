@@ -28,9 +28,7 @@
     </div>
 
     <h1>
-      <?php
-    //   echo $issue['title'] 
-      ?>
+    <?= $issue['title'] ?>
       <br>
       <small>By <?= $issue['first_name'] ?> <?= $issue['last_name'] ?></small>
     </h1>
@@ -48,13 +46,13 @@
         <?= $issue['content'] ?>
       </div>
     </div>
-  </section>
+  </section>  
 
   <hr class="m-5">
 
   <p class="ml-5">
     <a href="<?= base_path ?>/issues/">Return to archives...</a>
-    <?php if (ADMIN && $_SESSION['user']['id'] === $issue['user_id']): ?>
+    <?php if (ADMIN || isset($_SESSION['user']['id']) && $_SESSION['user']['id'] === $issue['user_id']): ?>
       |
       <a href="<?= base_path ?>/issues/edit.php?id=<?= $issue['id'] ?>">
         <i class="fa fa-pencil"></i>
@@ -74,7 +72,7 @@
 <div class="container">
   <?php
     if (AUTH) {
-    //   include_once(ROOT . "/comments/_form.php");
+      include_once(ROOT . "/comments/_form.php");
     }
   ?>
 </div>
@@ -88,6 +86,7 @@
         <?php foreach ($comments as $comment): ?>
           <li class="list-group-item">
             <h5 class="mb-4">
+     
               <small>&nbsp;&mdash;&nbsp;<?= $comment['first_name'] ?> <?= $comment['last_name'] ?></small>
             </h5>
             <hr>

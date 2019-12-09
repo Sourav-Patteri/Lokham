@@ -30,7 +30,7 @@
     <h1>
        Issues (Archives)
       <br>
-      <small>Better your tomorrow, TODAY...</small>
+      <small>Better your tomorrow, TODAY... </small>
     </h1>
   </header>
 </div>
