@@ -14,9 +14,12 @@
 
   $sql = "SELECT *, comments.comment_id as id FROM comments
     JOIN users ON comments.user_id = users.id  
-    JOIN ratings ON comments.rating_id = ratings.rating_id
     WHERE comments.issue_id = {$issue['id']}";
   $comments = Connect::query($sql);
+
+
+
+
 ?>
 
 <?php include_once(ROOT . '/partials/_header.php') ?>
@@ -91,8 +94,18 @@
             </h5>
             <hr>
             <div class="ml-5 d-flex flex-row justify-content-between align-items-center">
-              <p>
-              <?= $comment['rating'] ?>
+              <p class="bg-secondary">
+                <!-- sorry, thats how we made it work, will  change it soon :) -->
+                <?php 
+                 $sql = "SELECT rating FROM ratings
+                 WHERE ratings.issue_id = {$comment['issue_id']} AND 
+                 ratings.user_id = {$comment['user_id']}";
+                  $stmt = $conn->prepare($sql);
+                  $stmt->execute();
+                  $rating = $stmt->fetch();
+                  // var_dump($rating);
+                ?>
+              <?= $rating['rating'][0] ?>
               </p>
               <p>
                 <?= $comment['comment'] ?>

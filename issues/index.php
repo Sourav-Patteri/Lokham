@@ -15,11 +15,20 @@
     //         JOIN users ON issues.user_id = users.id JOIN ratings ON ratings.rating_id = users.id
     //         ORDER BY ratings.rating DESC LIMIT {$offset}, {$num_of_issues}";
     $sql = "SELECT * FROM lokham.issues 
-            JOIN users ON issues.user_id = users.id";
+            JOIN users ON issues.user_id = users.id
+            LIMIT {$offset}, {$num_of_issues}";
+
+    // $sql = "SELECT *, avg(rating) FROM lokham.issues
+    //         JOIN users ON issues.user_id = users.id
+    //         JOIN ratings ON ratings.user_id = users.id
+    //         GROUP BY ratings.issue_id
+    //         ORDER BY avg(rating) desc 
+    //         LIMIT {$offset}, {$num_of_issues}";    
             // $sql = "SELECT * FROM issues JOIN users ON issues.user_id = users.id JOIN ratings ON issues.user_id = ratings.user_id  
             // ORDER BY ratings.rating DESC LIMIT {$offset}, {$num_of_issues}";
     $issues = Connect::query($sql);
     $issues = $conn->query($sql);
+    $sql = "SELECT * FROM issues";
     $issue_count = $conn->query($sql)->rowCount();
     $num_of_pages = ceil($issue_count / $num_of_issues);
     ?>
@@ -46,10 +55,9 @@
           <div>
             <div class="card-title">
               <h3>
-                <a href="<?= base_path ?>/posts/show.php?id=<?= $issue['issue_id'] ?>"></a>
-                <?php 
-                // $issue['title'] //do it when you add title to each issue 
-                ?>
+                <a href="<?= base_path ?>/issues/show.php?id=<?= $issue['issue_id'] ?>">
+                <?= $issue['title'] //do it when you add title to each issue?>
+              </a>
               </h3>
               <hr>
               <small>Author: <?= $issue['first_name'] ?> <?= $issue['last_name'] ?></small>
