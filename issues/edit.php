@@ -11,7 +11,7 @@
   $issue = $stmt->fetch();
 
   // !Admins can only edit their own issues
-  if ($_SESSION['user']['id'] !== $issue['user_id']) {
+  if ($_SESSION['user']['id'] !== $issue['user_id'] && !ADMIN) {
     redirect_with_errors(base_path . "/issues","You may only edit issues you own.");
   }
   $_SESSION['form_data'] = $issue;

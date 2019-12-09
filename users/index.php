@@ -46,7 +46,7 @@ include_once(ROOT . '/partials/_header.php'); ?>
           <tbody>
             <?php foreach ($users as $user): ?>
               <tr>
-                <td><a href="./show?id=<?= $user['id'] ?>"><?= $user['first_name'] ?> <?= $user['last_name'] ?></a></td>
+                <td><a href="./show.php?id=<?= $user['id'] ?>"><?= $user['first_name'] ?> <?= $user['last_name'] ?></a></td>
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['phone'] ?></td>
                 <td>

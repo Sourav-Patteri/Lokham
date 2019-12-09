@@ -13,7 +13,7 @@
   $issue = $stmt->fetch();
 
   // Verify we have a issue
-  if (!$issue) {
+  if (!$issue && !ADMIN) {
     $_SESSION['flash']['danger'][] = "Please provide a valid Issue you own.";
     // Send them to issues because they're not editing a valid issue they own
     redirect(base_path . "/issues");
@@ -29,6 +29,6 @@
   $stmt->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
   $stmt->execute();
 
-  // Send bacn a success message
+  // Send back a success message
   $_SESSION['flash']['success'][] = "You have successfully delete an issue.";
   redirect(base_path . "/issues");
