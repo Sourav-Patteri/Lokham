@@ -49,7 +49,7 @@
  
   // Verify we have a post
   // if (!$issue) {
-    // $errors[] = "Please provide a valid issue id." . var_dump($issue);
+    // $errors[] = "Please provide a valid issue id." ;
     // Send them to issues because they're not editing a valid post they own
   //   redirect_with_errors(base_path . '/issues', "Please provide a valid post id.");
   // }
