@@ -45,7 +45,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card bg-secondary text center">
+                    <div class="card bg-white text center" style="box-shadow: 18px 24px 12px 0px rgba(0,0,0,0.91);">
                         <div class="card-body">
                             <h3 class="card-title mb-2" >Talk about whats happening in the world right now</h3>
                             <p class="card-text" >Join Lokham today</p>
