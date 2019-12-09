@@ -42,7 +42,7 @@
   <section class="ml-5">
     <div class="row">
       <div class="col-4">
-        <img src="<?=$issue['image']?>" alt="Posted Image" class="mr-4 img-fluid">
+        <img src="<?=$issue['image'] ?? base_path . '/img/world_tree.jpg'?>" alt="Posted Image" class="mr-4 img-fluid">
       </div>
 
       <div class="col-8">
@@ -94,7 +94,7 @@
             </h5>
             <hr>
             <div class="ml-5 d-flex flex-row justify-content-between align-items-center">
-              <p class="bg-secondary">
+              <p class="lead">
                 <!-- sorry, thats how we made it work, will  change it soon :) -->
                 <?php 
                  $sql = "SELECT rating FROM ratings
@@ -105,7 +105,8 @@
                   $rating = $stmt->fetch();
                   // var_dump($rating);
                 ?>
-              <?= $rating['rating'][0] ?>
+                Rating :
+              <?= $rating['rating'][0] ?>/5
               </p>
               <p>
                 <?= $comment['comment'] ?>
