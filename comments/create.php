@@ -49,7 +49,7 @@ $stmt->bindParam(':comment', $_POST['comment'], PDO::PARAM_STR);
 $stmt->execute();
 $issue_id = $conn->lastInsertId();
 
-
+    if(isset($_POST['rating'])){ 
   $sql = "INSERT INTO ratings
     (rating, user_id, issue_id) VALUES (
     {$_POST['rating']}, 
@@ -60,7 +60,7 @@ $issue_id = $conn->lastInsertId();
     // Prepare, bind and execute our SQL
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-
+    }
 
 // var_dump($sql);
 
