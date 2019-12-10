@@ -48,7 +48,7 @@ $form_data = $form_data ?? null;
   </div>
   <div class="custom-file m-2">
       <input type="file" name="uploads" class="custom-file-input" id="uploads">
-      <label for="uploads" class="custom-file-label">Choose File:</label>
+      <label for="uploads" class="custom-file-label">Choose Profile Picture:</label>
   </div>
   <div class="form-group">
     <label for="email">Email:</label>
