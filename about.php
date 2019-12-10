@@ -10,7 +10,7 @@
     <h1>
         About Lokham
     <br>
-      <small>Strengthening social awareness and empathy</small>
+      <small>Strengthening lives through social awareness and empathy</small>
     </h1>
     <br>
     </header>
