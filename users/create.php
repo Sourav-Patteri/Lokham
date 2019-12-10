@@ -97,7 +97,7 @@ if (count($errors) > 0) {
   }
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
-    $errors[] = "Sorry, your file was not uploaded.";
+    $errors[] = "Sorry, your file was not uploaded. If you have not chosen an image please choose one";
   // if everything is ok, try to upload file
   } else {
       move_uploaded_file($_FILES["uploads"]["tmp_name"], $target_file);

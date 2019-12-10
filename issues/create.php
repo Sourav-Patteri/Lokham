@@ -49,7 +49,7 @@
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   // Check if image file is a actual image or fake image
-  if(isset($_POST["uploads"]) && isset($_FILES["uploads"])) {
+  if(isset($_FILES["uploads"])) {
       $check = getimagesize($_FILES["uploads"]["tmp_name"]);
       if($check !== false) {
           echo "File is an image - " . $check["mime"] . ".";
@@ -77,14 +77,10 @@
   }
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
-    $errors[] = "Sorry, your file was not uploaded.";
+    $errors[] = "Sorry, your file was not uploaded. If you have not chosen a profile image please choose one";
   // if everything is ok, try to upload file
   } else {
-      if (move_uploaded_file($_FILES["uploads"]["tmp_name"], $target_file)) {
-      echo "The file ". basename( $_FILES["uploads"]["name"]). " has been uploaded.";
-      } else {
-        $errors[] = "Sorry, there was an error uploading your file.";
-      }
+      move_uploaded_file($_FILES["uploads"]["tmp_name"], $target_file);
   }
 }
   if(count($errors) > 0 ){
